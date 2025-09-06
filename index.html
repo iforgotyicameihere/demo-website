@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UFO Websites</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- minimal helpers; you can move these to styles.css -->
+    <style>
+      :root {
+        --header-h: 72px;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: var(--header-h);
+      }
+      section[id] {
+        scroll-margin-top: var(--header-h);
+      }
+      .top-navigation a.nav-link {
+        position: relative;
+        text-decoration: none;
+      }
+      .top-navigation a.nav-link.active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -6px;
+        height: 2px;
+        background: currentColor;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-bar">
+        <!-- Section A: Logo -->
+        <a class="logo" href="#home" aria-label="UFO Websites — Home">
+          <span class="ufo">UFO</span>
+          <span class="websites">websites</span>
+          <img src="assets/logo.jpeg.png" alt="Logo" />
+          <div class="logo-pixel"></div>
+        </a>
+
+        <!-- Section B: Nav -->
+        <nav class="top-navigation" aria-label="Primary">
+          <button class="trigram" aria-label="Open menu">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+          </button>
+          <ul class="nav-list">
+            <li><a class="nav-link" href="#home">Home</a></li>
+            <li><a class="nav-link" href="#how-it-works">How it works</a></li>
+            <li><a class="nav-link" href="#order">Order now</a></li>
+            <li>
+              <a class="nav-link" href="#contact">Contact my space ship</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- HOME / INTRO -->
+      <section id="home" class="sitegoals container">
+        <p>
+          This is where the unidentified creative process begins. We’re going to
+          abduct boring templates, probe them (Using Flexbox Only), and return
+          sleek, responsive designs to these mortal earthlings. muhahaha
+          <br />-Dev-
+        </p>
+
+        <h2>Practical &gt; Pretty</h2>
+        <p>
+          It’s not how gorgeous a website looks—it’s how
+          <strong>useful</strong> it is. The biggest misconception in web
+          development is chasing aesthetics over outcomes. We design for
+          <em>clarity, speed, and conversion</em>. Pretty comes after practical.
+        </p>
+
+        <ul class="practical-list">
+          <li><span>Fast</span> (lightweight assets, smart images)</li>
+          <li><span>Obvious</span> navigation &amp; CTAs</li>
+          <li><span>Accessible</span> (contrast, keyboard, ARIA)</li>
+          <li><span>Responsive</span> on every screen</li>
+          <li><span>Searchable</span> (semantic HTML, good headings)</li>
+          <li><span>Maintainable</span> (clean CSS, components, Flexbox)</li>
+        </ul>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section id="how-it-works" class="how-it-works container">
+        <h2>How It Works</h2>
+        <div class="steps">
+          <!-- Step 1 -->
+          <div class="step">
+            <span class="step-number">1</span>
+            <h3>Tell Me About Your Business</h3>
+            <p>
+              Fill out the <strong>Info Box</strong> with what you do, what you
+              want, and links or photos for inspiration.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="step">
+            <span class="step-number">2</span>
+            <h3>Receive Mockups</h3>
+            <p>
+              You’ll get <strong>2 unique build concepts</strong> based on your
+              ideas. Each one is designed to be practical, responsive, and out
+              of this world.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="step">
+            <span class="step-number">3</span>
+            <h3>Choose Your Direction</h3>
+            <p>
+              Pick the build that feels right for you. Along with it, you’ll
+              receive a <strong>free quote</strong> to launch your site into
+              orbit.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- ================= UFO Websites: Philosophy + Us vs Them ================= -->
+      <section class="ufo-philosophy" id="philosophy">
+        <div class="ufo-philosophy__container">
+          <h2 class="ufo-philosophy__title">Our Philosophy</h2>
+          <p class="ufo-philosophy__lede">
+            At <strong>UFO Websites</strong>, we believe every project is as
+            unique as life itself. No species is the same, no client is the
+            same. We treat your project like it actually matters—because it
+            does.
+          </p>
+          <p class="ufo-philosophy__body">
+            No cookie-cutter templates. No one-size-fits-all shortcuts. Just
+            human creativity, attention to detail, and care.
+          </p>
+        </div>
+      </section>
+
+      <section
+        class="ufo-compare"
+        id="us-vs-them"
+        aria-labelledby="ufo-compare-title"
+      >
+        <div class="ufo-compare__container">
+          <h2 class="ufo-compare__title" id="ufo-compare-title">Us vs. Them</h2>
+          <p class="ufo-compare__subtitle">
+            Why choose humans over copy-paste robots
+          </p>
+
+          <!-- Header row (visually-table, but semantic divs for better mobile control) -->
+          <div class="ufo-compare__grid ufo-compare__grid--head" role="row">
+            <div
+              class="ufo-compare__cell ufo-compare__cell--head"
+              role="columnheader"
+              aria-label="UFO Websites"
+            >
+              <span
+                class="ufo-compare__badge ufo-compare__badge--us"
+                aria-hidden="true"
+                >👽</span
+              >
+              <span class="ufo-compare__label">UFO Websites (Us)</span>
+            </div>
+            <div
+              class="ufo-compare__cell ufo-compare__cell--head"
+              role="columnheader"
+              aria-label="AI / Template Builders"
+            >
+              <span
+                class="ufo-compare__badge ufo-compare__badge--them"
+                aria-hidden="true"
+                >🤖</span
+              >
+              <span class="ufo-compare__label"
+                >Cookie-Cutter / AI Sites (Them)</span
+              >
+            </div>
+          </div>
+
+          <!-- Row 1 -->
+          <div class="ufo-compare__grid" role="row">
+            <div class="ufo-compare__cell" role="cell" data-label="Us">
+              Custom designs crafted around <em>you</em>.
+            </div>
+            <div class="ufo-compare__cell" role="cell" data-label="Them">
+              Pre-built templates that look like everyone else’s.
+            </div>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="ufo-compare__grid" role="row">
+            <div class="ufo-compare__cell" role="cell" data-label="Us">
+              Real human creativity + humor.
+            </div>
+            <div class="ufo-compare__cell" role="cell" data-label="Them">
+              Generic, lifeless copy.
+            </div>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="ufo-compare__grid" role="row">
+            <div class="ufo-compare__cell" role="cell" data-label="Us">
+              Attention to detail and personal support.
+            </div>
+            <div class="ufo-compare__cell" role="cell" data-label="Them">
+              “Good luck figuring it out” support bots.
+            </div>
+          </div>
+
+          <!-- Row 4 -->
+          <div class="ufo-compare__grid" role="row">
+            <div class="ufo-compare__cell" role="cell" data-label="Us">
+              Flexible mockups + thoughtful revisions.
+            </div>
+            <div class="ufo-compare__cell" role="cell" data-label="Them">
+              One click, zero soul.
+            </div>
+          </div>
+
+          <!-- Row 5 -->
+          <div class="ufo-compare__grid" role="row">
+            <div class="ufo-compare__cell" role="cell" data-label="Us">
+              Brand storytelling that actually connects.
+            </div>
+            <div class="ufo-compare__cell" role="cell" data-label="Them">
+              Keyword stuffing aimed only at SEO.
+            </div>
+          </div>
+
+          <!-- Row 6 -->
+          <div class="ufo-compare__grid" role="row">
+            <div class="ufo-compare__cell" role="cell" data-label="Us">
+              Future-proof, scalable builds.
+            </div>
+            <div class="ufo-compare__cell" role="cell" data-label="Them">
+              Locked into rigid templates.
+            </div>
+          </div>
+
+          <!-- Row 7 -->
+          <div class="ufo-compare__grid" role="row">
+            <div class="ufo-compare__cell" role="cell" data-label="Us">
+              You can call/text a real human.
+            </div>
+            <div class="ufo-compare__cell" role="cell" data-label="Them">
+              Chat with an AI that doesn’t care.
+            </div>
+          </div>
+
+          <div class="ufo-compare__cta">
+            <a class="ufo-button" href="#contact">Beam Me a Quote</a>
+          </div>
+        </div>
+      </section>
+      <!-- ================= End Section ================= -->
+
+      <!-- ORDER / QUOTE FORM -->
+      <section id="order" class="order container">
+        <h2>Start the Abduction</h2>
+        <p class="lead">
+          Tell me about your business and what you want. I’ll send back
+          <strong>2 unique mockups</strong> and a <strong>free quote</strong>.
+        </p>
+
+        <!-- Replace action="#" with your form handler (Formspree/Netlify/EmailJS/server) -->
+        <form class="info-form" action="#" method="post" novalidate>
+          <div class="form-grid">
+            <label class="field">
+              <span>Your name *</span>
+              <input type="text" name="name" required autocomplete="name" />
+            </label>
+
+            <label class="field">
+              <span>Email *</span>
+              <input type="email" name="email" required autocomplete="email" />
+            </label>
+
+            <label class="field">
+              <span>Business / Brand</span>
+              <input type="text" name="business" autocomplete="organization" />
+            </label>
+
+            <label class="field">
+              <span>Existing website (if any)</span>
+              <input
+                type="url"
+                name="current_site"
+                placeholder="https://example.com"
+              />
+            </label>
+
+            <label class="field field--full">
+              <span>What do you do? *</span>
+              <textarea
+                name="what_you_do"
+                required
+                placeholder="Tell me what you offer and who you serve..."
+              ></textarea>
+            </label>
+
+            <label class="field field--full">
+              <span>What should it look like?</span>
+              <textarea
+                name="look_and_feel"
+                placeholder="Drop links to sites you like, Pinterest boards, or describe the vibe."
+              ></textarea>
+            </label>
+
+            <label class="field">
+              <span>Budget range</span>
+              <select name="budget">
+                <option value="">Select…</option>
+                <option value="under-1k">Under $1,000</option>
+                <option value="1-2k">$1,000–$2,000</option>
+                <option value="2-5k">$2,000–$5,000</option>
+                <option value="5k-plus">$5,000+</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Timeline</span>
+              <select name="timeline">
+                <option value="">Select…</option>
+                <option value="rush">ASAP / Rush (2–3 weeks)</option>
+                <option value="month">~1 month</option>
+                <option value="quarter">1–3 months</option>
+                <option value="flexible">Flexible</option>
+              </select>
+            </label>
+
+            <fieldset class="field field--full">
+              <legend>Extras (optional)</legend>
+              <div class="inline-checks">
+                <label
+                  ><input type="checkbox" name="extras" value="logo" />
+                  Logo</label
+                >
+                <label
+                  ><input type="checkbox" name="extras" value="copy" />
+                  Copywriting</label
+                >
+                <label
+                  ><input type="checkbox" name="extras" value="ecommerce" />
+                  E-commerce</label
+                >
+                <label
+                  ><input type="checkbox" name="extras" value="booking" />
+                  Booking/Calendar</label
+                >
+                <label
+                  ><input type="checkbox" name="extras" value="seo" /> SEO
+                  basics</label
+                >
+                <label
+                  ><input type="checkbox" name="extras" value="hosting" />
+                  Hosting setup</label
+                >
+              </div>
+            </fieldset>
+
+            <label class="field field--full">
+              <span>Anything else?</span>
+              <textarea
+                name="notes"
+                placeholder="Deadlines, must-have features, pages, competitors, etc."
+              ></textarea>
+            </label>
+
+            <label class="consent">
+              <input type="checkbox" name="consent" required />
+              <span>I agree to be contacted about my project.</span>
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn primary">
+              Send — get 2 mockups + free quote
+            </button>
+            <p class="small">You’ll hear back within 24–48 hours.</p>
+          </div>
+        </form>
+      </section>
+
+      <!-- CONTACT MY SPACESHIP -->
+      <section id="contact" class="contact-spaceship container">
+        <h2>📡 Contact My Spaceship</h2>
+        <p>Transmission frequencies are open—beam your message my way.</p>
+
+        <ul class="contact-info">
+          <li>
+            🛰️ Email:
+            <a href="mailto:daquota92@gmail.com">daquota92@gmail.com</a>
+          </li>
+          <li>👨‍🚀 Phone: <a href="tel:+19452379377">(945) 237-9377</a></li>
+          <li>🌌 Base Station: Knoxville, TN</li>
+        </ul>
+
+        <form class="contact-form" action="#" method="post" novalidate>
+          <label for="astronaut-name">Astronaut Name:</label>
+          <input type="text" id="astronaut-name" name="name" required />
+
+          <label for="mission-message">Ground Control to Major Rom:</label>
+          <textarea id="mission-message" name="message" required></textarea>
+
+          <button type="submit">🚀 Launch Transmission</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="container">
+      <p>&copy; 2025 UFO Websites</p>
+    </footer>
+
+    <!-- nav behavior -->
+    <script>
+      (() => {
+        const header = document.querySelector(".site-header");
+        const headerH = header ? header.offsetHeight : 72;
+        document.documentElement.style.setProperty(
+          "--header-h",
+          headerH + "px"
+        );
+
+        // Smooth scroll with offset fallback
+        document
+          .querySelectorAll('.top-navigation a[href^="#"]')
+          .forEach((a) => {
+            a.addEventListener("click", (e) => {
+              const id = a.getAttribute("href").slice(1);
+              const target = document.getElementById(id);
+              if (!target) return;
+              e.preventDefault();
+              const y =
+                target.getBoundingClientRect().top +
+                window.pageYOffset -
+                headerH;
+              window.scrollTo({ top: y, behavior: "smooth" });
+            });
+          });
+
+        // Active link while scrolling
+        const links = [
+          ...document.querySelectorAll(".top-navigation a.nav-link"),
+        ];
+        const byHref = (id) =>
+          links.find((l) => l.getAttribute("href") === `#${id}`);
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              links.forEach((l) => l.classList.remove("active"));
+              const link = byHref(entry.target.id);
+              if (link) link.classList.add("active");
+            });
+          },
+          { threshold: 0.5, rootMargin: `-${headerH}px 0px -40% 0px` }
+        );
+
+        document
+          .querySelectorAll("section[id]")
+          .forEach((s) => observer.observe(s));
+      })();
+    </script>
+  </body>
+</html>
