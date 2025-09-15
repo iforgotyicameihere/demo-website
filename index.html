@@ -4,17 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UFO Websites</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/demo-website/css/styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <script src="intro.js"></script>
     <!-- minimal helpers; you can move these to styles.css -->
     <style>
       :root {
-        --header-h: 72px;
+        --header-h: 92px;
       }
       html {
         scroll-behavior: smooth;
@@ -58,20 +59,26 @@
             <li><a class="nav-link" href="#home">Home</a></li>
             <li><a class="nav-link" href="#how-it-works">How it works</a></li>
             <li><a class="nav-link" href="#order">Order now</a></li>
-            <li>
-              <a class="nav-link" href="#contact">Contact my space ship</a>
-            </li>
+
+            <li><a class="nav-link" href="services.html">Beam Box</a></li>
           </ul>
         </nav>
       </div>
     </header>
-
+    <section class="video-hero">
+      <video id="ufoLoop" autoplay muted loop playsinline>
+        <source src="assets/fly.mp4" type="video/mp4" />
+        <!-- Optional second source for Safari quirks:
+    <source src="assets/fly.webm" type="video/webm"> -->
+        Your browser doesn’t support HTML5 video.
+      </video>
+    </section>
     <main>
       <!-- HOME / INTRO -->
       <section id="home" class="sitegoals container">
         <p>
-          This is where the unidentified creative process begins. We’re going to
-          abduct boring templates, probe them (Using Flexbox Only), and return
+          This is where the creative process begins. We’re going to abduct
+          boring website ideas, probe them (Using Flexbox Only), and return
           sleek, responsive designs to these mortal earthlings. muhahaha
           <br />-Dev-
         </p>
@@ -139,7 +146,8 @@
             At <strong>UFO Websites</strong>, we believe every project is as
             unique as life itself. No species is the same, no client is the
             same. We treat your project like it actually matters—because it
-            does.
+            does. <br />
+            Combining art with tomorrow's technology.
           </p>
           <p class="ufo-philosophy__body">
             No cookie-cutter templates. No one-size-fits-all shortcuts. Just
@@ -411,7 +419,7 @@
           <label for="astronaut-name">Astronaut Name:</label>
           <input type="text" id="astronaut-name" name="name" required />
 
-          <label for="mission-message">Ground Control to Major Rom:</label>
+          <label for="mission-message">Ground Control to Major DOM:</label>
           <textarea id="mission-message" name="message" required></textarea>
 
           <button type="submit">🚀 Launch Transmission</button>
@@ -424,55 +432,6 @@
     </footer>
 
     <!-- nav behavior -->
-    <script>
-      (() => {
-        const header = document.querySelector(".site-header");
-        const headerH = header ? header.offsetHeight : 72;
-        document.documentElement.style.setProperty(
-          "--header-h",
-          headerH + "px"
-        );
-
-        // Smooth scroll with offset fallback
-        document
-          .querySelectorAll('.top-navigation a[href^="#"]')
-          .forEach((a) => {
-            a.addEventListener("click", (e) => {
-              const id = a.getAttribute("href").slice(1);
-              const target = document.getElementById(id);
-              if (!target) return;
-              e.preventDefault();
-              const y =
-                target.getBoundingClientRect().top +
-                window.pageYOffset -
-                headerH;
-              window.scrollTo({ top: y, behavior: "smooth" });
-            });
-          });
-
-        // Active link while scrolling
-        const links = [
-          ...document.querySelectorAll(".top-navigation a.nav-link"),
-        ];
-        const byHref = (id) =>
-          links.find((l) => l.getAttribute("href") === `#${id}`);
-
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (!entry.isIntersecting) return;
-              links.forEach((l) => l.classList.remove("active"));
-              const link = byHref(entry.target.id);
-              if (link) link.classList.add("active");
-            });
-          },
-          { threshold: 0.5, rootMargin: `-${headerH}px 0px -40% 0px` }
-        );
-
-        document
-          .querySelectorAll("section[id]")
-          .forEach((s) => observer.observe(s));
-      })();
-    </script>
+    <script src="assets/script.js"></script>
   </body>
 </html>

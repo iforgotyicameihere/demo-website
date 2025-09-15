@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UFO Websites — Services</title>
+    <link rel="icon" href="assets/favicon.png" />
+
+    <link rel="stylesheet" href="css/services.styles.css" />
+  </head>
+
+  <body>
+    <script src="assets/services.js"></script>
+    <header>
+      <a class="logo" href="index.html">
+        <img src="assets/logo.jpg.png" alt="UFO Websites" />
+        <span>UFO Websites</span>
+      </a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html" aria-current="page">Services</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+    <section id="ufo-vm">
+      <div class="vm" id="vm">
+        <!-- Glass + shelves -->
+        <div class="vm-glass">
+          <div class="shelves">
+            <div class="shelf">
+              <div
+                class="item"
+                data-price="1"
+                data-title="Extract It!"
+                data-link="tools/extract.html"
+              >
+                <div class="icn">🎧</div>
+                <div class="ttl">Extract It!</div>
+                <div class="sub">MP4 → clean MP3/WAV in-browser.</div>
+                <div class="price">1 token</div>
+              </div>
+              <div
+                class="item"
+                data-price="2"
+                data-title="Loop It!"
+                data-link="tools/loop.html"
+              >
+                <div class="icn">♾️</div>
+                <div class="ttl">Loop It!</div>
+                <div class="sub">Make seamless loops for reels & heroes.</div>
+                <div class="price">2 tokens</div>
+              </div>
+              <div
+                class="item"
+                data-price="2"
+                data-title="Zap to PDF!"
+                data-link="tools/pdfify.html"
+              >
+                <div class="icn">⚡</div>
+                <div class="ttl">Zap to PDF!</div>
+                <div class="sub">
+                  Drag images, export a slick multi-page PDF.
+                </div>
+                <div class="price">2 tokens</div>
+              </div>
+            </div>
+            <div class="shelf">
+              <div
+                class="item"
+                data-price="1"
+                data-title="QR Beam"
+                data-link="tools/qr.html"
+              >
+                <div class="icn">🛸</div>
+                <div class="ttl">Beam Me a QR</div>
+                <div class="sub">Paste link → crispy branded QR in PNG.</div>
+                <div class="price">1 token</div>
+              </div>
+              <div
+                class="item"
+                data-price="1"
+                data-title="Memeify It!"
+                data-link="tools/meme.html"
+              >
+                <div class="icn">😎</div>
+                <div class="ttl">Memeify It!</div>
+                <div class="sub">
+                  Top/bottom text, UFO borders, animated caps.
+                </div>
+                <div class="price">1 token</div>
+              </div>
+              <div
+                class="item"
+                data-price="3"
+                data-title="Visualizer"
+                data-link="tools/visualizer.html"
+              >
+                <div class="icn">🔊</div>
+                <div class="ttl">Visualize Audio</div>
+                <div class="sub">Neon waveform video from your MP3.</div>
+                <div class="price">3 tokens</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right control panel -->
+        <aside class="panel">
+          <div class="brand">
+            <div class="dot"></div>
+            <strong>UFO Vending</strong>
+          </div>
+          <div class="screen">
+            <div>
+              <div>Balance</div>
+              <div class="bal"><span id="bal">0</span> tokens</div>
+            </div>
+          </div>
+          <div class="coin-slot">
+            <button class="btn" id="add1">Insert 1 token</button>
+            <button class="btn gray" id="add5">+5</button>
+          </div>
+          <div class="tray"><p>Pickup tray — your selection drops here</p></div>
+        </aside>
+      </div>
+
+      <!-- (Optional) SFX -->
+      <audio id="sfx-coin" src="assets/sfx/coin.mp3" preload="auto"></audio>
+      <audio id="sfx-drop" src="assets/sfx/ka-chunk.mp3" preload="auto"></audio>
+
+      <script>
+        (() => {
+          let balance = 0;
+          const $ = (s, r = document) => r.querySelector(s);
+          const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+          const balEl = $("#bal");
+          const sfxCoin = $("#sfx-coin");
+          const sfxDrop = $("#sfx-drop");
+          const vm = $("#vm");
+
+          const setBal = (v) => {
+            balance = Math.max(0, v);
+            balEl.textContent = balance;
+          };
+
+          // Insert tokens
+          $("#add1").addEventListener("click", () => {
+            setBal(balance + 1);
+            tryPlay(sfxCoin);
+          });
+          $("#add5").addEventListener("click", () => {
+            setBal(balance + 5);
+            tryPlay(sfxCoin);
+          });
+
+          // Buy items
+          $$(".item").forEach((card) => {
+            card.addEventListener(
+              "click",
+              () => {
+                const price = +card.dataset.price || 1;
+                const href = card.dataset.link || "#";
+
+                if (balance < price) {
+                  $(".screen").animate(
+                    [
+                      { filter: "brightness(1)" },
+                      { filter: "brightness(1.6)" },
+                      { filter: "brightness(1)" },
+                    ],
+                    { duration: 500 }
+                  );
+                  return;
+                }
+                setBal(balance - price);
+
+                // Clone and drop
+                const rect = card.getBoundingClientRect();
+                const vmRect = vm.getBoundingClientRect();
+                const clone = card.cloneNode(true);
+                clone.classList.add("falling");
+                clone.style.left = rect.left - vmRect.left + 14 + "px";
+                clone.style.top = rect.top - vmRect.top + 14 + "px";
+                vm.appendChild(clone);
+                tryPlay(sfxDrop);
+
+                setTimeout(() => {
+                  vm.removeChild(clone);
+                  window.location.href = href; // or dispatch event to open modal
+                }, 950);
+              },
+              { passive: true }
+            );
+          });
+
+          function tryPlay(aud) {
+            try {
+              aud && aud.play && aud.play().catch(() => {});
+            } catch (e) {}
+          }
+        })();
+      </script>
+    </section>
+  </body>
+</html>
